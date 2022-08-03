@@ -6,7 +6,7 @@
         <img src="../../assets/imgs/logo.595745bd.png" alt="" />
 
         <!-- 账号 -->
-        <el-form-item prop="name">
+        <el-form-item prop="loginName">
           <el-input
             v-model.trim="loginFrom.loginName"
             type="text"
@@ -62,7 +62,7 @@
         </el-form-item>
 
         <!-- 提交按钮 -->
-        <el-button class="login-btn" type="primary" @click="getToken(loginFrom)"
+        <el-button class="login-btn" type="primary" @click="clickFn"
           >登录</el-button
         >
       </el-form>
@@ -87,7 +87,7 @@ export default {
         clientToken: 123
       },
       loginFormRules: {
-        name: [{ required: true, message: '请输入手机号', trigger: 'blur' }],
+        name: [{ required: true, message: '请输入账号', trigger: 'blur' }],
         password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
         code: [{ required: true, message: '请输入验证码', trigger: 'blur' }]
       },
@@ -112,6 +112,11 @@ export default {
     },
     getImgCode() {
       this.imageCode()
+    },
+    clickFn() {
+      // 表单是否校验通过才能发起请求
+      this.$refs.from.validate()
+      this.getToken(this.loginFrom)
     },
     ...mapUserActions(['getToken'])
   }
