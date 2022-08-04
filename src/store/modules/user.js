@@ -1,6 +1,7 @@
 import { login } from '@/api/user'
 import router from '@/router/index.js'
 import { getBaseuser } from '@/api/user'
+import { setTokenTime } from '@/utils/auth'
 export default {
   namespaced: true,
   state: {
@@ -21,6 +22,10 @@ export default {
     // 记录用户基本信息
     setUserInfo(state, payload) {
       state.userInfo = payload
+    },
+    logout(state) {
+      state.userInfo = { roleName: '' }
+      state.token = ''
     }
   },
   actions: {
@@ -28,11 +33,11 @@ export default {
     async getToken(context, loginFrom) {
       const { data } = await login(loginFrom)
       console.log(data)
-      context.commit('setUserInfo', data)
-      // console.log(data)
       // 添加token并跳转
       if (data.success == true || data.msg == '登陆成功') {
+        context.commit('setUserInfo', data)
         context.commit('setToken', data.token)
+        setTokenTime() // 存入token的时间戳
         router.push({ path: './' })
       }
     },
@@ -42,6 +47,10 @@ export default {
       const { data } = await getBaseuser(context.state.userInfo.userId)
       console.log(data)
       context.commit('setUserInfo', data)
+    },
+    // 退出登录
+    logout(context) {
+      context.commit('logout')
     }
   }
 }

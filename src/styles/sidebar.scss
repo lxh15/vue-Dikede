@@ -1,4 +1,9 @@
 #app {
+  .dashboard {
+    &-container {
+      margin: 30px;
+    }
+  }
   .main-container {
     min-height: 100%;
     transition: margin-left 0.28s;
@@ -9,11 +14,11 @@
   .sidebar-container {
     transition: width 0.28s;
     width: $sideBarWidth !important;
-    background: -webkit-linear-gradient(bottom, #3d6df8, #5b8cff);
+    // background: -webkit-linear-gradient(bottom, #3d6df8, #5b8cff);
     height: 100%;
     position: fixed;
     font-size: 0px;
-    top: 0;
+    top: 60px;
     bottom: 0;
     left: 0;
     z-index: 1001;
@@ -26,8 +31,10 @@
     }
 
     .scrollbar-wrapper {
+      // margin-top: 60px;
       overflow-x: hidden !important;
       background: #fff;
+      color: red;
     }
 
     .el-scrollbar__bar.is-vertical {
@@ -71,24 +78,18 @@
       a {
         li {
           .svg-icon {
-            color: #fff;
+            color: #111111;
             font-size: 18px;
             vertical-align: middle;
             .icon {
-              color: #fff;
+              color: #111111;
             }
           }
           span {
-            color: #fff;
+            color: #111111;
           }
           &:hover {
             background-color: #fff !important;
-            .svg-icon {
-              color: #43a7fe;
-            }
-            span {
-              color: #43a7fe;
-            }
           }
         }
       }
@@ -103,17 +104,18 @@
     }
 
     .is-active > .el-submenu__title {
-      color: $subMenuActiveText !important;
+      color: #111111 !important;
     }
 
     & .nest-menu .el-submenu > .el-submenu__title,
     & .el-submenu .el-menu-item {
       min-width: $sideBarWidth !important;
-      background-color: $subMenuBg !important;
+      color: red;
+      // background-color: $subMenuBg !important;
 
-      &:hover {
-        background-color: $subMenuHover !important;
-      }
+      // &:hover {
+      //   // background-color: $subMenuHover !important;
+      // }
     }
   }
 
@@ -226,7 +228,7 @@
   .el-menu-item {
     &:hover {
       // you can use $subMenuHover
-      background-color: $menuHover !important;
+      // background-color: $menuHover !important;
     }
   }
 
