@@ -4,6 +4,7 @@ import getters from './getters'
 import app from './modules/app'
 import settings from './modules/settings'
 import user from './modules/user'
+import workorder from './modules/workorder'
 // 引入自动保存
 import createVuexPersisted from 'vuex-persistedstate'
 Vue.use(Vuex)
@@ -12,7 +13,8 @@ const store = new Vuex.Store({
   modules: {
     app,
     settings,
-    user
+    user,
+    workorder,
   },
   getters,
   plugins: [
@@ -20,11 +22,11 @@ const store = new Vuex.Store({
       reducer(val) {
         // 指定存储某个模块的数据
         return {
-          user: val.user
+          user: val.user,
         }
-      }
-    })
-  ]
+      },
+    }),
+  ],
 })
 
 export default store

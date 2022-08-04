@@ -14,7 +14,6 @@ const request = axios.create({
 request.interceptors.request.use(
   (config) => {
     if (store.state.user.token) {
-      console.log(1)
       const tokenTime = getTokenTime()
       const currentTime = Date.now()
       const tokenTimeout = 2 * 60 * 60 * 1000

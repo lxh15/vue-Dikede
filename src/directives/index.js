@@ -4,9 +4,8 @@ export const imgError = {
   // 图片插入失败的回调
   inserted: function (el, { value }) {
     // dom元素的src = 传递的属性  解构value 就是图片的地址
-    console.log(value)
     el.onerror = function () {
       el.src = value
     }
-  }
+  },
 }

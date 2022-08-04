@@ -34,13 +34,13 @@ export const constantRoutes = [
   {
     path: '/login',
     component: () => import('@/views/login/index'),
-    hidden: true
+    hidden: true,
   },
 
   {
     path: '/404',
     component: () => import('@/views/404'),
-    hidden: true
+    hidden: true,
   },
 
   {
@@ -52,9 +52,9 @@ export const constantRoutes = [
         path: 'dashboard',
         name: 'Dashboard',
         component: () => import('@/views/dashboard/index'),
-        meta: { title: '帝可得', icon: 'home' }
-      }
-    ]
+        meta: { title: '帝可得', icon: 'home' },
+      },
+    ],
   },
   {
     path: '/task',
@@ -65,16 +65,16 @@ export const constantRoutes = [
       {
         path: 'business',
         name: 'business',
-        component: () => import('@/views/workorder'),
-        meta: { title: '运营工单' }
+        component: () => import('@/views/workorder/business'),
+        meta: { title: '运营工单' },
       },
       {
         path: 'operation',
         name: 'Operation',
-        component: () => import('@/views/workorder'),
-        meta: { title: '运维工单' }
-      }
-    ]
+        component: () => import('@/views/workorder/operation'),
+        meta: { title: '运维工单' },
+      },
+    ],
   },
   {
     path: '/node',
@@ -83,9 +83,9 @@ export const constantRoutes = [
       {
         path: 'region',
         component: () => import('@/views/pointposition'),
-        meta: { title: '点位管理', icon: 'dianwei' }
-      }
-    ]
+        meta: { title: '点位管理', icon: 'dianwei' },
+      },
+    ],
   },
   {
     path: '/vm',
@@ -94,9 +94,9 @@ export const constantRoutes = [
       {
         path: 'index',
         component: () => import('@/views/equipment/index'),
-        meta: { title: '设备管理', icon: 'shebei' }
-      }
-    ]
+        meta: { title: '设备管理', icon: 'shebei' },
+      },
+    ],
   },
   {
     path: '/user',
@@ -105,9 +105,9 @@ export const constantRoutes = [
       {
         path: 'index',
         component: () => import('@/views/personnel/index'),
-        meta: { title: '人员管理', icon: 'renyuan' }
-      }
-    ]
+        meta: { title: '人员管理', icon: 'renyuan' },
+      },
+    ],
   },
   {
     path: '/sku',
@@ -116,9 +116,9 @@ export const constantRoutes = [
       {
         path: 'sku-class',
         component: () => import('@/views/commodity/index'),
-        meta: { title: '商品管理', icon: 'shangpin' }
-      }
-    ]
+        meta: { title: '商品管理', icon: 'shangpin' },
+      },
+    ],
   },
 
   {
@@ -128,9 +128,9 @@ export const constantRoutes = [
       {
         path: 'index',
         component: () => import('@/views/strategy/index'),
-        meta: { title: '策略管理', icon: 'celue' }
-      }
-    ]
+        meta: { title: '策略管理', icon: 'celue' },
+      },
+    ],
   },
   {
     path: '/order',
@@ -139,9 +139,9 @@ export const constantRoutes = [
       {
         path: 'index',
         component: () => import('@/views/order/index'),
-        meta: { title: '订单管理', icon: 'dingdan' }
-      }
-    ]
+        meta: { title: '订单管理', icon: 'dingdan' },
+      },
+    ],
   },
   {
     path: '/report',
@@ -150,20 +150,20 @@ export const constantRoutes = [
       {
         path: 'index',
         component: () => import('@/views/reconciliation/index'),
-        meta: { title: '对账管理', icon: 'duizhang' }
-      }
-    ]
+        meta: { title: '对账管理', icon: 'duizhang' },
+      },
+    ],
   },
 
   // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
+  { path: '*', redirect: '/404', hidden: true },
 ]
 
 const createRouter = () =>
   new Router({
     // mode: 'history', // require service support
     scrollBehavior: () => ({ y: 0 }),
-    routes: constantRoutes
+    routes: constantRoutes,
   })
 
 const router = createRouter()
