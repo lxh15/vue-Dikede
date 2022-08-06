@@ -30,7 +30,7 @@
       <span class="demonstration">显示总数</span>
       <el-pagination
         layout="prev,next"
-        :small="true"
+        :small="false"
         prev-text="上一页"
         next-text="下一页"
         @prev-click="prevClick"
@@ -71,11 +71,13 @@ export default {
     },
     prevClick() {
       console.log('上一页')
+      this.$emit('prevPage')
     },
     nextClick() {
       console.log('下一页')
-      this.replenishment.pageIndex++
-      this.$store.dispatch('workorder/getOperateList', this.replenishment)
+      this.$emit('nextPage')
+      // this.replenishment.pageIndex++
+      // this.$store.dispatch('workorder/getBusinessList', this.replenishment)
     },
     handleClick(val) {
       console.log(val)

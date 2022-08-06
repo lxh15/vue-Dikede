@@ -2,7 +2,7 @@
   <!-- 运维工单 -->
   <div class="dashboard-container">
     <!-- 头部搜索框 -->
-    <Input></Input>
+    <Input @enterFn="getEnterFn" @onQuery="onQueryFn"></Input>
     <div class="result">
       <!-- 新建 -->
       <el-row type="flex">
@@ -11,7 +11,11 @@
         </el-button>
       </el-row>
       <!-- 主题表单 -->
-      <Table :list="list"></Table>
+      <Table
+        :list="list"
+        @prevPage="getPrevPage"
+        @nextPage="getNextPage"
+      ></Table>
     </div>
   </div>
 </template>
@@ -29,6 +33,8 @@ export default {
         pageIndex: 0,
         pageSize: 10,
         isRepair: true,
+        taskCode: 0, // 工单编号
+        status: 0, // 工单状态
       },
     }
   },
@@ -52,9 +58,28 @@ export default {
       const res = await getaskType()
       // console.log(res)
     },
-    // 获取运营工单
+    // 获取运维工单
     searchOperation() {
       this.replenishment.pageIndex++
+      this.$store.dispatch('workorder/getOperationList', this.replenishment)
+    },
+    // 获取上一页数据
+    getPrevPage() {
+      this.replenishment.pageIndex--
+      this.$store.dispatch('workorder/getOperationList', this.replenishment)
+    },
+    // 获取下一页数据
+    getNextPage() {
+      this.searchOperation()
+    },
+    // 获取工单编号搜索
+    getEnterFn(taskCode) {
+      this.replenishment.taskCode = taskCode
+      this.$store.dispatch('workorder/getOperationList', this.replenishment)
+    },
+    // 根据状态查询
+    onQueryFn(status) {
+      this.replenishment.status = status
       this.$store.dispatch('workorder/getOperationList', this.replenishment)
     },
   },

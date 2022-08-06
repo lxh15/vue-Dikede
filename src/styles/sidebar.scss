@@ -8,15 +8,16 @@
   .main-container {
     min-height: 100%;
     transition: margin-left 0.28s;
-    margin-left: $sideBarWidth;
+    margin-left: 167px !important;
     position: relative;
     // background-color: #f8fafd;
     background-color: #f3f4f4;
   }
 
   .sidebar-container {
-    transition: width 0.28s;
-    width: $sideBarWidth !important;
+    // transition: width 0.28s;
+    // width: $sideBarWidth !important;
+    width: 167px;
     // background: -webkit-linear-gradient(bottom, #3d6df8, #5b8cff);
     height: 100%;
     position: fixed;
@@ -124,12 +125,12 @@
 
   .hideSidebar {
     .sidebar-container {
-      width: 54px !important;
+      width: 167px !important;
     }
 
     .main-container {
       margin-left: 54px;
-      background-color: pink;
+      // background-color: pink;
     }
 
     .submenu-title-noDropdown {
